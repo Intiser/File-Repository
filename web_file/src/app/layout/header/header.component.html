@@ -1,0 +1,26 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet">
+<mat-toolbar color="primary">
+    <!-- <button (click)="clicked($event)" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+    </button> -->
+    <span> <p routerLink=""> File Sharing App </p> </span>
+    <span class="example-spacer"></span>
+    <button *ngIf="admin" mat-raised-button color="accent" routerLink='/admin'  >
+        SHOW REQUESTS
+    </button>
+    <!-- [matMenuTriggerFor]="menu" -->
+    <!-- <mat-menu #menu="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+    </mat-menu> -->
+    <button *ngIf="!login" routerLink='/login' mat-button>
+        LOGIN
+    </button>
+    <button *ngIf="login" (click)="logout()"  mat-button>
+        LOGOUT
+    </button>
+    <button routerLink="/upload" mat-button>
+        UPLOAD
+    </button>
+</mat-toolbar>

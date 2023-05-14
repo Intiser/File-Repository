@@ -1,0 +1,52 @@
+<div fxLayoutAlign ="center center" fxLayout="column">
+    <div>
+        <h1> Download File</h1>
+    </div>
+
+    <div fxLayoutAlign="center center" fxLayout="column">
+
+        <ng-container matColumnDef="expandedDetail">
+            <td mat-cell>
+              <div class="example-element-detail" >
+                <div class="example-element-diagram" >
+                  <div class="example-element-position" >
+                     <h4> File Name: </h4> 
+                     {{file?.name}} 
+                 </div>
+                 <pre></pre>
+                  <div class="example-element-symbol">  
+                      <h4> Size: </h4> 
+                      {{getStringKB(file?.size)}} 
+                  </div>
+                  <pre></pre>
+                  <div class="example-element-name">
+                    <h4> Created At: </h4>  
+                    {{file?.dateTime}} 
+                 </div>
+
+                  
+                </div>       
+            </div>
+            </td>
+        </ng-container>
+
+        <mat-error *ngIf="file.blocked">
+            This file is Block. Send request to unblock it.
+        </mat-error>
+
+        <button 
+            [disabled] = "file.blocked" 
+            (click)="download()"
+            class="example-element-button" mat-raised-button color="primary" fxLayoutAlign="center center">
+             Download
+        </button>
+
+        <button
+            (click)="reportFile()" 
+            class="example-element-button" mat-raised-button color="warn" fxLayoutAlign="center center"> 
+            Request 
+        </button>
+
+    </div>
+
+</div>

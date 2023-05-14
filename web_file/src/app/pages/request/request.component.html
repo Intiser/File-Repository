@@ -1,0 +1,45 @@
+<app-loading *ngIf="isLoading" ></app-loading>
+<div class="example-full-width" fxLayoutAlign="center center"  fxLayout="column">
+    <form class="example-form" [formGroup]="formGroup" fxLayout="column">
+        <h1 class="example-full-width text-center">
+            Request 
+        </h1>
+
+        <div class="example-full-width" fxLayout="column">
+            <span>
+                Relevant File 
+                <strong>
+                    {{ file.name }}
+                </strong>
+            </span>
+        </div>
+
+        <pre></pre>
+
+        
+             <mat-form-field class="example-full-width"  appearance="outline">
+                <mat-label>Title</mat-label>
+                <input matInput type="text" placeholder="Title" name="Title" formControlName="title">
+                <mat-error *ngIf="formGroup.controls['title'].hasError('required')">
+                        Title is Required.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea  class="example-text" matInput formControlName="description"></textarea>
+                <mat-error *ngIf="formGroup.controls['description'].hasError('required')">
+                    Description is Required.
+                </mat-error>
+            </mat-form-field>
+
+
+            <button 
+                (click) = "submit()"
+                [disabled]="!formGroup.valid" mat-raised-button color="accent">
+                 Submit 
+            </button>
+
+    </form>
+
+</div>

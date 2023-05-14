@@ -1,0 +1,78 @@
+<app-loading *ngIf="isLoading" ></app-loading>
+<div fxLayoutAlign="center center"  fxLayout="row" fxFlexFill>
+    <form class="example-form" [formGroup]="formGroup">
+        
+        <h1 class="text-center">Register</h1>
+        
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" placeholder="First Name" name="First Name" formControlName="firstName">
+            <mat-error *ngIf="formGroup.controls['firstName'].hasError('required')">
+                    First Name is Required.
+            </mat-error>
+        </mat-form-field>
+          
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Last name</mat-label>
+            <input matInput placeholder="Last Name" name="Last Name" type="text"  formControlName="lastName">
+            <mat-error *ngIf="formGroup.controls['lastName'].hasError('required')">
+                Last Name is Required.
+            </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Email Address</mat-label>
+            <input matInput type="email"  placeholder="Email" name="Email" formControlName="email">
+            <mat-error *ngIf="formGroup.controls['email'].hasError('required')">
+                Email is Required.
+            </mat-error>
+            <mat-error *ngIf="formGroup.controls['email'].hasError('email')">
+                Valid Email is Required.
+            </mat-error>
+        </mat-form-field>
+      
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password"  placeholder="Password" name="Password" formControlName="password">
+            <mat-error *ngIf="formGroup.controls['password'].hasError('required')">
+                Password is Required.
+            </mat-error>
+            <mat-error *ngIf="formGroup.controls['password'].hasError('minLength')">
+                Provide a password of atleast 8 letters.
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="password"  placeholder="Confirm Password" name="Confirm Password" formControlName="confirm_password">
+            <mat-error *ngIf="formGroup.controls['confirm_password'].hasError('required')">
+                Confirm Password is Required.
+            </mat-error>
+            <mat-error *ngIf="formGroup.controls['confirm_password'].hasError('minLength')">
+                Provide a password of atleast 8 letters.
+            </mat-error>
+            <mat-error *ngIf="!checkPasswords()">
+                Both Passwords doesn't Match
+            </mat-error>
+        </mat-form-field>
+        
+        
+        <!-- <mat-form-field class="example-full-width" appearance="outline"> -->
+            <mat-checkbox #checkbox class="example-margin" formControlName="agreed_to_terms">Agreed to term and conditions</mat-checkbox>
+            <!-- <mat-error *ngIf="formGroup.controls['agreed_to_terms'].hasError('required')">
+                You didn't Agreed to Terms
+            </mat-error> -->
+        <!-- </mat-form-field> -->
+
+       
+
+        <pre></pre>
+        
+
+        <button class="height" [disabled]="!formGroup.valid || !checkPasswords()" mat-raised-button color="primary" (click)="registerClicked()" fxFlexFill>Register</button>
+
+      </form>
+      
+
+</div>
